@@ -1,8 +1,8 @@
 import { cx } from "class-variance-authority";
 import { Button } from "./components";
 
-const intents = [undefined, "primary", "secondary", "tertiary"] as const;
-const sizes = [undefined, "large", "medium", "small"] as const;
+const intents = ["primary", "secondary", "tertiary"] as const;
+const sizes = ["xl", "large", "medium", "small"] as const;
 
 const radius = "3xl";
 
@@ -60,8 +60,17 @@ function App() {
                           "w-3": size === "small",
                           "w-4": size === "medium" || size === undefined,
                           "w-5": size === "large",
+                          "w-6": size === "xl",
                         })}
                       />
+                    </Button>
+                    <Button
+                      radius={radius}
+                      {...(intent && { intent })}
+                      {...(size && { size })}
+                      disabled
+                    >
+                      disabled button
                     </Button>
                   </div>
                 </td>
@@ -117,7 +126,7 @@ function App() {
           </Button>
         </div>
 
-        <button className="focusable self-center underline">
+        <button className="focusable self-center underline hover-hover:hover:text-primary active:text-primary">
           Super custom unicorn button 🦄
         </button>
       </div>
