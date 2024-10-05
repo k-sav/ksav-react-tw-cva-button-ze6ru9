@@ -1,71 +1,68 @@
-import React from 'react';
-import { cva, type VariantProps } from 'class-variance-authority';
+import React from "react";
+import { cva, type VariantProps } from "class-variance-authority";
 
 export const button = cva(
-  'button transition-all flex items-center focusable border',
+  "button transition-all flex items-center focusable border justify-center",
   {
     variants: {
       radius: {
-        md: 'rounded-md',
-        lg: 'rounded-lg',
-        '3xl': 'rounded-3xl',
-        full: 'rounded-full',
+        md: "rounded-md",
+        lg: "rounded-lg",
+        "3xl": "rounded-3xl",
+        full: "rounded-full",
       },
       intent: {
         primary: [
-          'bg-primary',
-          'text-white',
-          'border-transparent',
-          'hover:bg-primary-alt',
+          "bg-primary",
+          "text-white",
+          "border-transparent",
+          "hover:bg-primary-alt",
         ],
         secondary: [
-          'bg-transparent',
-          'text-gray-800',
-          'border-sand',
-          'hover:bg-chalk',
-          'hover:border-chalk',
+          "bg-transparent",
+          "text-gray-800",
+          "border-sand",
+          "hover:bg-chalk",
+          "hover:border-chalk",
         ],
         tertiary: [
-          'bg-fuschia',
-          'text-white',
-          'border-transparent',
-          'hover:bg-fuschia-alt',
+          "bg-fuschia",
+          "text-white",
+          "border-transparent",
+          "hover:bg-fuschia-alt",
         ],
       },
       size: {
-        small: ['text-sm', 'py-2', 'px-4'],
-        medium: ['text-base', 'py-3', 'px-5'],
+        small: ["text-sm", "py-2", "px-4"],
+        medium: ["text-base", "py-2.5", "px-5"],
+        large: ["text-lg", "py-3", "px-6"],
       },
-      // Only really appropriate for secondary. not sure how to do subvariant
       border: {
-        // true: 'border',
-        // false: 'border-none',
-        true: '',
-        false: '',
+        true: "",
+        false: "",
       },
       elevation: {
-        none: 'shadow-none',
-        '1': 'shadow shadow-black/25',
-        sm: 'shadow-sm shadow-black/25',
-        md: 'shadow-md shadow-black/25',
-        lg: 'shadow-lg shadow-black/25',
-        xl: 'shadow-xl shadow-black/25',
-        '2xl': 'shadow-2xl shadow-black/25',
+        none: "shadow-none",
+        "1": "shadow shadow-black/25",
+        sm: "shadow-sm shadow-black/25",
+        md: "shadow-md shadow-black/25",
+        lg: "shadow-lg shadow-black/25",
+        xl: "shadow-xl shadow-black/25",
+        "2xl": "shadow-2xl shadow-black/25",
       },
     },
     compoundVariants: [
       {
-        // ✨ apply to `secondary`  intents ✨
-        intent: ['secondary'],
+        intent: ["secondary"],
         border: false,
-        class: 'border-transparent',
+        class: "border-transparent",
       },
     ],
     defaultVariants: {
-      intent: 'primary',
-      size: 'medium',
-      radius: '3xl',
-      elevation: 'none',
+      intent: "primary",
+      size: "medium",
+      radius: "3xl",
+      elevation: "none",
       border: true,
     },
   }

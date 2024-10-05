@@ -2,7 +2,7 @@ import { cx } from "class-variance-authority";
 import { Button } from "./components";
 
 const intents = [undefined, "primary", "secondary", "tertiary"] as const;
-const sizes = [undefined, "medium", "small"] as const;
+const sizes = [undefined, "large", "medium", "small"] as const;
 
 const radius = "3xl";
 
@@ -40,13 +40,30 @@ function App() {
               <th scope="row">{size || "default"}</th>
               {intents.map((intent) => (
                 <td scope="col">
-                  <Button
-                    radius={radius}
-                    {...(intent && { intent })}
-                    {...(size && { size })}
-                  >
-                    {intent || "default"} button
-                  </Button>
+                  <div className="flex flex-col gap-2">
+                    <Button
+                      radius={radius}
+                      {...(intent && { intent })}
+                      {...(size && { size })}
+                    >
+                      {intent || "default"} button
+                    </Button>
+                    <Button
+                      className="gap-2"
+                      radius={radius}
+                      {...(intent && { intent })}
+                      {...(size && { size })}
+                    >
+                      {intent || "default"} button{" "}
+                      <Icon
+                        className={cx({
+                          "w-3": size === "small",
+                          "w-4": size === "medium" || size === undefined,
+                          "w-5": size === "large",
+                        })}
+                      />
+                    </Button>
+                  </div>
                 </td>
               ))}
             </tr>
