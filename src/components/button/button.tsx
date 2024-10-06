@@ -2,7 +2,7 @@ import React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 
 export const button = cva(
-  "button transition-all flex items-center focusable border justify-center select-none duration-300",
+  "button transition-all flex items-center focusable border justify-center select-none duration-300 no-underline",
   {
     variants: {
       radius: {
@@ -37,7 +37,8 @@ export const button = cva(
         ],
       },
       size: {
-        small: ["text-sm", "py-2", "px-4"],
+        xs: ["text-xs", "py-1", "px-2"],
+        small: ["text-sm", "py-1.5", "px-2"],
         medium: ["text-base", "py-2.5", "px-5"],
         large: ["text-lg", "py-2.5", "px-6"],
         xl: ["text-xl", "py-3", "px-6"],
@@ -58,7 +59,7 @@ export const button = cva(
       },
       disabled: {
         true: "cursor-not-allowed",
-        false: "",
+        false: "hover-none:active:scale-95",
       },
     },
     compoundVariants: [
@@ -121,7 +122,7 @@ export const button = cva(
 export interface ButtonVariantProps extends VariantProps<typeof button> {}
 
 export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+  extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "disabled">,
     ButtonVariantProps {}
 
 // do you ship react components or just the cva function or both?
@@ -137,6 +138,34 @@ export const Button: React.FC<ButtonProps> = ({
   ...props
 }) => (
   <button
+    className={button({
+      intent,
+      size,
+      className,
+      radius,
+      elevation,
+      border,
+      disabled,
+    })}
+    {...props}
+  />
+);
+
+export interface ButtonLinkProps
+  extends Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, "disabled">,
+    ButtonVariantProps {}
+export const ButtonLink: React.FC<ButtonLinkProps> = ({
+  className,
+  intent,
+  size,
+  radius,
+  elevation,
+  border,
+  disabled,
+
+  ...props
+}) => (
+  <a
     className={button({
       intent,
       size,
