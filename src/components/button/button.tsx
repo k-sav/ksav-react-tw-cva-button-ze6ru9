@@ -2,7 +2,7 @@ import React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 
 export const button = cva(
-  "button transition-all flex items-center focusable border justify-center select-none duration-300 no-underline",
+  " leading-tight text-pretty button transition-all flex items-center focusable border justify-center select-none duration-300 no-underline",
   {
     variants: {
       radius: {
@@ -162,7 +162,6 @@ export const ButtonLink: React.FC<ButtonLinkProps> = ({
   elevation,
   border,
   disabled,
-
   ...props
 }) => (
   <a

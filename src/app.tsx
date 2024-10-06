@@ -1,5 +1,5 @@
 import { cx } from "class-variance-authority";
-import { Button } from "./components";
+import { Button, ButtonLink } from "./components";
 
 const intents = ["primary", "secondary", "tertiary"] as const;
 const sizes = ["xl", "large", "medium", "small", "xs"] as const;
@@ -88,9 +88,11 @@ function App() {
         </tbody>
       </table>
 
-      <div className="flex flex-col gap-2">
-        <div className="flex gap-2">
-          <Button className="block">Test button with emoji 🚀</Button>
+      <div className="flex flex-col gap-4 justify-center text-center">
+        <div className="flex gap-2 justify-center">
+          <Button className="gap-3">
+            Test button with emoji <span aria-hidden>🚀</span>
+          </Button>
           <Button className="gap-2">
             Test button with icon
             <Icon />
@@ -101,10 +103,12 @@ function App() {
           </Button>
           <Button className="gap-2" intent="secondary" border={false}>
             <Icon />
-            Test button with icon - no border
+            <span className="line-clamp-1">
+              Test button with icon - no border
+            </span>
           </Button>
         </div>
-        <div className="flex gap-2">
+        <div className="flex gap-2 justify-center">
           <Button
             className="flex gap-2 self-center aspect-square"
             intent="tertiary"
@@ -133,26 +137,27 @@ function App() {
             <span className="sr-only">Test button with icon</span>
           </Button>
         </div>
-
-        <Button size="xs" radius="md" className="self-center">
-          Xs less rounded
-        </Button>
-        <Button size="xs" radius="md" className="self-center" intent="tertiary">
-          Xs less rounded
-        </Button>
-        <Button
-          size="xs"
-          radius="md"
-          className="self-center"
-          intent="secondary"
-        >
-          Xs less rounded
-        </Button>
-
-        <button className="focusable self-center underline hover-hover:hover:text-primary active:text-primary">
-          Super custom unicorn button 🦄
-        </button>
-
+        <div className="flex gap-2 justify-center">
+          <Button size="xs" radius="md" className="self-center">
+            Xs less rounded
+          </Button>
+          <Button
+            size="xs"
+            radius="md"
+            className="self-center"
+            intent="tertiary"
+          >
+            Xs less rounded
+          </Button>
+          <Button
+            size="xs"
+            radius="md"
+            className="self-center"
+            intent="secondary"
+          >
+            Xs less rounded
+          </Button>
+        </div>
         <button className="focusable self-center hover-hover:hover:bg-chalk px-4 py-3 rounded-lg transition-colors duration-300 relative group">
           <svg className="w-6" viewBox="0 0 24 24">
             <path
@@ -166,6 +171,28 @@ function App() {
           </span>
           <span className="sr-only">Test button with icon</span>
         </button>
+        <button className="focusable self-center underline hover-hover:hover:text-primary active:text-primary">
+          Super custom unicorn button 🦄
+        </button>
+        <p>I know, I know. But this always comes up</p>
+        <p> Buttons and links should be the same height when side-by-side</p>
+        <div className="flex gap-2 justify-center">
+          <ButtonLink
+            href="https://linktr.ee/admin"
+            target="_blank"
+            className="gap-2"
+          >
+            Test button link
+            <svg viewBox="0 -256 1850 1850" style={{ height: "1.2cap" }}>
+              <path
+                fill="currentColor"
+                d="M1408 608V288q0-119-84.5-203.5T1120 0H288Q169 0 84.5 84.5T0 288v832q0 119 84.5 203.5T288 1408h704q14 0 23-9t9-23v-64q0-14-9-23t-23-9H288q-66 0-113-47t-47-113V288q0-66 47-113t113-47h832q66 0 113 47t47 113v320q0 14 9 23t23 9h64q14 0 23-9t9-23m384 864V960q0-26-19-45t-45-19-45 19l-176 176-652-652q-10-10-23-10t-23 10L695 553q-10 10-10 23t10 23l652 652-176 176q-19 19-19 45t19 45 45 19h512q26 0 45-19t19-45"
+                transform="matrix(1 0 0 -1 30.373 1426.95)"
+              />
+            </svg>
+          </ButtonLink>
+          <Button>Test button</Button>
+        </div>
       </div>
     </>
   );
